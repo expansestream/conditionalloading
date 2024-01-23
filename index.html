@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Conditional Loading JavaScript</title>
+    <style>
+      
+      body {
+        font: 1em Helvetica, Arial, sans-serif;
+        margin: 2em;
+        padding: 0;
+        background-color: lemonchiffon;
+        box-sizing: border-box;
+      }
+      
+      h1 {
+        font-size: 2em;
+        margin: 0;
+      }
+
+      #col1 {
+        background-color: #8aa5c1;
+      }
+
+      #col2 {
+        background-color: #8aa5c1;
+      }
+
+      #here {
+        padding: .25em;
+        image-rendering: optimizeQuality;
+      }
+
+  
+
+      @media screen and (min-width: 600px) {
+        .wrapper {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          column-gap: 5%;
+          }
+        }
+      button {
+            display: inline;
+            font-size: large;
+            border-style: solid;
+            border-radius: .5em;
+            background-color: aquamarine;    
+        }
+        button:hover { 
+            cursor: pointer;
+            background-color: lightgreen;
+        }
+        button:active {
+            background-color: limegreen;
+        }
+
+        h1 {
+          font-size: 4rem;
+        }
+
+        #garden {
+          padding: 1em;
+          background-color: darkkhaki;
+        }
+
+        #below {
+          text-align: center;
+          padding: .5em;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <div id="col1">
+        <h1>Watch my size!</h1>
+        <p>This layout is responsive. See what happens if you make the browser window wider or narrow.</p>
+    </div>
+    <div id="col2">
+        <div id="here"></div>
+        <p>One late November night in the year 1782, so the story runs, two brothers sat over their winter fire in the little French town of Annonay, watching the grey smoke-wreaths from the hearth curl up the wide chimney. Their names were Stephen and Joseph Montgolfier, they were papermakers by trade, and were noted as possessing thoughtful minds and a deep interest in all scientific knowledge and new discovery.</p>
+            <p>Before that night—a memorable night, as it was to prove—hundreds of millions of people had watched the rising smoke-wreaths of their fires without drawing any special inspiration from the fact.”</p>
+    </div>
+    
+        <div id="placement"></div>
+        <br>
+
+        <dialog id="garden">
+            <img src="https://github.com/expansestream/butterflygarden/blob/main/IMG_2094%20(1).JPEG?raw=true">
+            <div id="below"></div>
+        </dialog>
+
+       
+
+        <script>
+          console.log(screen.width);
+          if (screen.width < 600) {
+
+            var newButton = document.createElement ("button");
+            var copyButton = document.createTextNode("Go to Figure");
+            newButton.appendChild (copyButton);
+            var myDiv = document.getElementById ("placement");
+            myDiv.appendChild (newButton);
+
+            var newButton = document.createElement ("button");
+            var copyButton = document.createTextNode("Close");
+            newButton.appendChild (copyButton);
+            var myDiv = document.getElementById ("below");
+            myDiv.appendChild (newButton);
+
+        document.getElementById("placement").addEventListener("click",discreption1,false);
+           function discreption1() {
+                dialog = document.getElementById("garden");
+                dialog.show();   
+           };
+           document.getElementById("below").addEventListener("click",discreption2,false);
+           function discreption2() {
+                dialog = document.getElementById("garden");
+                dialog.close();   
+           };
+
+          } else {
+
+            const img2 = document.createElement("img");
+            img2.src = "https://github.com/expansestream/butterflygarden/blob/main/IMG_2094%20(1).JPEG?raw=true";
+            img2.alt = "CA Garden";
+            img2.height = "350";
+            img2.width + "auto";
+            var myDiv = document.getElementById("here");
+            myDiv.appendChild (img2);
+          }
+
+        </script>
+
+  </div>
+      
+</body>
+
+</html>
